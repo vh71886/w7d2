@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  band_id: 
+  year: 
+  title: 
+  studio: false
+
+two:
+  band_id: 
+  year: 
+  title: 
+  studio: false
