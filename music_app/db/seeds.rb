@@ -8,3 +8,8 @@
 User.destroy_all
 user1 = User.create(email: "user1@musicapp.com", password: "ilikepop")
 user2 = User.create(email: "user2@musicapp.com", password: "iikerock")
+
+Band.destroy_all
+b1 = Band.create(name: "The Police")
+b2 = Band.create(name: "Aerosmith")
+b3 = Band.create(name: "The Beatles")
