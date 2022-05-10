@@ -20,6 +20,11 @@ class BandsController < ApplicationController
         end
     end
 
+    def show
+        @band = Band.find(params[:id])
+        render :show
+    end
+
     def edit
         @band = Band.find(params[:id])
         render :edit
