@@ -60,3 +60,23 @@ User
         * add nice form alignment and spacing
 
 ## Phase 1: Band/Album/Track
+Build inventory system
+    * Migrations
+    * Model definition
+    * Routes
+    * Controller
+    * Views
+
+Bands schema
+    * name:string  null: false
+Other items for bands
+    * Routes: all routes
+    * Views
+
+In order to test using Postman we will need to disable CSRF protection. 
+Add the following line right underneath the line config.load_defaults 5.2 in config/application.rb. 
+Remember, this should only be done while we are working in development.
+```
+# config/application.rb
+config.action_controller.default_protect_from_forgery = false
+``` 
