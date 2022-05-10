@@ -55,7 +55,7 @@ User
             - "Music App" header with fun font
         * display login/out info on the right side of the header
             - flex
-        * keep <a> tags
+        * keep anchor tags
             - make links look like buttons using background color and border-radius
         * add nice form alignment and spacing
 
@@ -67,11 +67,12 @@ Build inventory system
     * Controller
     * Views
 
-Bands schema
-    * name:string  null: false
+### Bands schema
+* name:string  null: false
+
 Other items for bands
-    * Routes: all routes
-    * Views
+* Routes: all routes
+* Views
 
 In order to test using Postman we will need to disable CSRF protection. 
 Add the following line right underneath the line config.load_defaults 5.2 in config/application.rb. 
@@ -80,3 +81,71 @@ Remember, this should only be done while we are working in development.
 # config/application.rb
 config.action_controller.default_protect_from_forgery = false
 ``` 
+
+Add CSRF protection to the project
+    * Remove line (shown above)
+    * Add authenticity token to all forms
+
+### Albums schema
+* band_id:integer   null:false, unique: true
+* year:integer      null:false
+* title:stsring     null:false
+* studio:boolean    null:false, default: true
+
+Just for fun, make album titles unique to the band 
+
+Create models, controllers, routes, and views
+ * routes: nested (see below)
+
+```
+new_band_album GET    /bands/:band_id/albums/new(.:format)   albums#new
+        albums POST   /albums(.:format)                      albums#create
+    edit_album GET    /albums/:id/edit(.:format)             albums#edit
+         album GET    /albums/:id(.:format)                  albums#show
+               PATCH  /albums/:id(.:format)                  albums#update
+               PUT    /albums/:id(.:format)                  albums#update
+               DELETE /albums/:id(.:format)                  albums#destroy
+```
+
+* New/edit: 
+    * Dropdown to select Band
+    * Radio buttons to select Studio/Live
+        - Default value - use checked in HTML tag
+* Show:
+    * Link back to Band
+    * Include Edit and Delete buttons
+
+Update Band#show
+* List and link to all albums
+* Add ability to add album
+
+### Tracks Schema
+* album_id:integer      null:false, unique:true
+* title:string          null:false
+* ord:integer           null:false
+* lyrics:text           optional:true
+* bonus:boolean         null:false, default: false
+
+Create models, controllers, routes, and views
+* routes (see below) - includes nested
+
+```
+new_album_track GET    /albums/:album_id/tracks/new(.:format) tracks#new
+         tracks POST   /tracks(.:format)                      tracks#create
+     edit_track GET    /tracks/:id/edit(.:format)             tracks#edit
+          track GET    /tracks/:id(.:format)                  tracks#show
+                PATCH  /tracks/:id(.:format)                  tracks#update
+                PUT    /tracks/:id(.:format)                  tracks#update
+                DELETE /tracks/:id(.:format)                  tracks#destroy
+```
+
+* new/edit: 
+    * dropdown to select Album
+    * radio buttons for bonus/regular track
+    * textarea for lyrics
+* show:
+    * links or buttons to album, edit, delete
+* Update album to show and add tracks
+
+Models
+* remember associations, validations, dependent:destroy, etc.
