@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   #        user GET    /users/:id(.:format)                                                                users#show
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
+
+  root to: redirect('/users/new')
 end

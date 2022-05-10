@@ -6,14 +6,43 @@
     </thead>
 
     <tbody>
-        <tr>
-            <td></td>
-            <td> </td>
-        </tr>
+        <form action="<%= users_url %>" method="POST">
+            <tr>
+                <td>
+                    <label for="user_email">Email</label>
+                </td>
+                <td>
+                    <input 
+                         id="user_email"
+                         name="user[email]"
+                         type="text">
+                </td>
+            </tr>
 
-        <tr>
-            <td> </td>
-            <td> </td>
-        </tr>
+            <tr>
+                <td>
+                    <label for="user_password">Password</label>
+                </td>
+                <td>
+                    <input 
+                         id="user_password"
+                         name="user[password]"
+                         type="password">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <br>
+                    <input type="submit" value="Create User">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <a href="<%= new_session_url %>">Already have an account? Sign in!</a>
+                </td>
+            </tr>
+        </form>
     </tbody>
 </table>

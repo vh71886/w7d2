@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
         if @user.save
             log_in_user(@user)
-            redirect_to new_user_url
+            redirect_to user_url(@user)
         else 
             render :new
         end
@@ -19,13 +19,10 @@ class UsersController < ApplicationController
 
     # user login or if they go to their account page
     def show
-        @user = User.find_by_credentials(
-            params[:user][:email],
-            params[:user][:password]
-        )
+        @user = User.find(params[:id])
 
         if @user
-            redirect_to user_url(@user)
+            render :show
         else
             redirect_to new_session_url
         end
@@ -33,6 +30,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit()
+        params.require(:user).permit(:email, :password)
     end
 end

@@ -1,0 +1,29 @@
+<table>
+    <thead>
+        <tr>
+            <th colspan="2"><h1>Hello <%= current_user.email if self.current_user  %></h1></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% if logged_in? %>
+
+            <% [:email].each do |attr| %>
+            <tr>
+                <td>Email:</td>
+                <td><%= @user.email %></td>
+            </tr>
+            <% end %>
+
+            <tr>
+                <td colspan="2">
+                    <form action="<%= session_url %>" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="submit" value="Log Out">
+                    </form>
+                </td>
+            </tr>
+
+        <% end %>
+    </tbody>
+</table>

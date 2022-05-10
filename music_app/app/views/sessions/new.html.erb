@@ -1,0 +1,48 @@
+<table>
+    <thead>
+        <tr>
+            <th colspan="2"><h1>Log into Music App - Welcome Back!</h1></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <form action="/session" method="POST">
+            <tr>
+                <td>
+                    <label for="user_email">Email</label>
+                </td>
+                <td>
+                    <input 
+                         id="user_email"
+                         name="user[email]"
+                         type="text">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="user_password">Password</label>
+                </td>
+                <td>
+                    <input 
+                         id="user_password"
+                         name="user[password]"
+                         type="password">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <br>
+                    <input type="submit" value="Log In">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <a href="<%= new_user_url %>">Don't have an account? Sign up!</a>
+                </td>
+            </tr>
+        </form>
+    </tbody>
+</table>
