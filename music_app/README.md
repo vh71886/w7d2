@@ -17,7 +17,7 @@ User
 * Table schema 
     - email: string             null: false, unique: true
     - password_digest: string   null: false
-    - session_token: string     null: false
+    - session_token: string     null: false, unique: true
     * index email and session_token
 * Create new user, log in, log out, restrict access, etc.
     * User model
