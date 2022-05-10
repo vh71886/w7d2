@@ -13,16 +13,9 @@ class User < ApplicationRecord
 
     # Find user by email and password combination
     def self.find_by_credentials(email, password)
-        @user = User.find_by(
-            params[:user][:email],
-            params[:user][:password]
-        )
-
-        if @user.nil?
-            nil
-        else
-            @user
-        end
+        user = User.find_by(email: email)
+        return nil if user.nil
+        user.is_password?(password) ? user : nil
     end
 
     # Set password and password_digest
