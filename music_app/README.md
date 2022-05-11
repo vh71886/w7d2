@@ -122,12 +122,13 @@ Update Band#show
 ### Tracks Schema
 * album_id:integer      null:false, unique:true
 * title:string          null:false
-* ord:integer           null:false
+* ord:integer           null:false, unique:true (track number)
 * lyrics:text           optional:true
 * bonus:boolean         null:false, default: false
 
 Create models, controllers, routes, and views
 * routes (see below) - includes nested
+* lyrics optional - validation/association
 
 ```
 new_album_track GET    /albums/:album_id/tracks/new(.:format) tracks#new
