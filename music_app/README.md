@@ -92,7 +92,7 @@ Add CSRF protection to the project
 * title:stsring     null:false
 * studio:boolean    null:false, default: true
 
-Just for fun, make album titles unique to the band 
+Just for fun: make album titles unique to the band 
 
 Create models, controllers, routes, and views
  * routes: nested (see below)

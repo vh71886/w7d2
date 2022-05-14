@@ -7,11 +7,11 @@ class ApplicationController < ActionController::Base
     end
 
     def require_logged_in
-
+        redirect_to new_session_url unless logged_in?
     end
 
     def require_logged_out
-        
+        redirect_to bands_url if logged_in?
     end
 
     def logged_in?
@@ -26,6 +26,5 @@ class ApplicationController < ActionController::Base
         @current_user.reset_session_token! if logged_in?
         session[:session_token] = nil
         @current_user = nil
-        # redirect?
     end
 end
