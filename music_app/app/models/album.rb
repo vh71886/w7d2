@@ -1,6 +1,5 @@
 class Album < ApplicationRecord
     validates :band_id, :year, :title, :studio, presence: true
-    validates :band_id, uniqueness: true
 
     # done
     belongs_to :band,
