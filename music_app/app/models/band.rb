@@ -7,4 +7,8 @@ class Band < ApplicationRecord
         class_name: :Album,
         primary_key: :id
 
+    # for Track:band
+    has_many :band_tracks,
+        through: :albums,
+        source: :tracks
 end
