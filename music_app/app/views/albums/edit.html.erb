@@ -1,0 +1,2 @@
+<h1>Edit <%= @album.title + " by " + Band.find_by(band_id: params[:band_id]).name %></h1>
+<%= render "form", album: @album, action: :edit %>

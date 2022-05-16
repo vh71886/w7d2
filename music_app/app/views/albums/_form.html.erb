@@ -1,0 +1,45 @@
+<% if action == :edit %>
+    <% action_url = album_url(album) %>
+    <% button_text = "Update album" %>
+<% else %>
+    <% action_url = albums_url %>
+    <% button_text = "Add album" %>
+<% end %>
+
+<form action="<%= action_url %>" method="POST">
+    <input type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+    
+    <%# Override method if editing album %>
+    <input type="hidden" name="_method" value="PATCH">
+
+    <%# Album title %>
+    <label for="album[title]">Title:</label>
+    <input type="text" id="album[title]" name="album[title]"
+        value="<%= album.title if album %>">
+    <br>
+
+    <%# Album year %>
+    <label for="album[year]">Year:</label>
+    <input type="text" id="album[year]" name="album[year]"
+        value="<%= album.year if album %>">
+    <br>
+
+    <%# Album studio %>
+    <label for="album[studio]">Recording Type:</label>
+    <br>
+    <label for="studio">Studio</label>
+    <input type="radio" value="studio" name="album[studio]" id="studio" checked>
+    <label for="live">Live</label>
+    <input type="radio" value="live" name="album[studio]" id="live">
+    <br>
+
+    <%# Submit button %>
+    <input type="submit" value="<%= button_text %>">
+</form>
+<br>
+
+<%# Back to band %>
+<%# why isn't the method: 'get' working? it's trying to post %>
+<%= button_to "Back to band", band_url(album.band_id), method: "GET" %>
